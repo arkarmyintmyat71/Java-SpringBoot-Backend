@@ -7,7 +7,6 @@ spring:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         default_schema: employee_management_system
       database: mysql
     hibernate:
