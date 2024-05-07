@@ -12,6 +12,8 @@ import com.backend.springBoot.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -32,5 +34,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeRepo.save(employee);
         EmployeeDto employeeDto = this.employeeMapper.mapEntityToDto(employee);
         return new DataBody<>(employeeDto);
+    }
+
+    @Override
+    public List<EmployeeDto> getEmployee() {
+        var employeeList = this.employeeRepo.findAll();
+        List<EmployeeDto> employeeDto = this.employeeMapper.mapEntityToDtoList(employeeList);
+        return employeeDto;
     }
 }

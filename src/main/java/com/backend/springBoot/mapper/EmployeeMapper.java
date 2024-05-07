@@ -7,10 +7,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring",
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface EmployeeMapper {
     EmployeeDto mapEntityToDto(Employee employee);
     Employee mapReqToEntity (EmployeeReqDto employeeReqDto);
+    List<EmployeeDto> mapEntityToDtoList(List<Employee> employee);
 }

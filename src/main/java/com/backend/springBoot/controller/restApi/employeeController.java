@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/v1/employee")
 @RequiredArgsConstructor
@@ -23,5 +25,10 @@ public class employeeController {
     public ResponseEntity<DataBody<EmployeeDto>> createEmployee(@RequestBody EmployeeReqDto employeeReqDto) {
         DataBody<EmployeeDto> employeeDto = this.employeeService.createEmployee(employeeReqDto);
         return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    }
+    @GetMapping("/detail")
+    public ResponseEntity<List<EmployeeDto>> getEmployeeDetail() {
+        var employeeDtoList = this.employeeService.getEmployee();
+        return new ResponseEntity<>(employeeDtoList, HttpStatus.OK);
     }
 }
